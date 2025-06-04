@@ -1,5 +1,5 @@
-### We'll follow rules of MODULAR DESIGN PATTERN in API Development
-1. Interface
+### We'll follow rules of MODULAR DESIGN PATTERN in API Development ☑️
+1. Interface/Type for type-definiton
 2. Model & Mongoose-Schema
 3. ZOD Schema-Validation
 4. Routes
