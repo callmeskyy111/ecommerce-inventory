@@ -1,0 +1,46 @@
+# Node dependencies
+node_modules/
+
+# Environment variables
+.env
+# in case we have .env.development, .env.local, etc.
+.env.*
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# TypeScript cache
+*.tsbuildinfo
+
+# IDE/Editor folders
+.vscode/
+.idea/
+
+# Optional: coverage reports from tests
+coverage/
+nyc_output/
+
+# Optional: temporary files
+temp/
+tmp/
+
+# Optional: production config files
+*.local
+*.bak
+
+# Optional: process manager logs (like PM2)
+pids/
+*.pid
+*.seed
