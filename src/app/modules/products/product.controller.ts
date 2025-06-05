@@ -17,7 +17,7 @@ const createProduct = async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(500).json({
       success: false,
-      message: error?.message || "SOMETHING WENT WRONG ⚠️",
+      message: error?.message || "🔴SOMETHING WENT WRONG ⚠️",
       error: error,
     });
     console.log(error);
@@ -47,7 +47,28 @@ const getSingleProduct = async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(500).json({
       success: false,
-      message: error?.message || "SOMETHING WENT WRONG ⚠️",
+      message: error?.message || "🔴SOMETHING WENT WRONG ⚠️",
+      error: error,
+    });
+    console.log(error);
+  }
+};
+
+const updateProduct = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const data = req.body;
+    const result = await ProductServices.updateProductToDB(productId, data);
+    res.status(200).json({
+      success: true,
+      message: "Product updated successfully ✅",
+      updatedProduct: result,
+    });
+    console.log(result)
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error?.message || "🔴SOMETHING WENT WRONG ⚠️",
       error: error,
     });
     console.log(error);
@@ -59,4 +80,5 @@ export const ProductControllers = {
   createProduct,
   getAllProducts,
   getSingleProduct,
+  updateProduct,
 };
