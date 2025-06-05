@@ -12,6 +12,8 @@ app.use(cors());
 //routes
 app.use("/api/products", productRouter);
 
-app.get("/",);
+app.get("/",(_,res)=>{
+  res.send('ECommerce-Inventory Server is running... ✅')
+});
 
 export default app;
