@@ -6,12 +6,21 @@ const createAProductToDB = async (productData: TProduct) => {
   return result;
 };
 
-const getProductsFromDB = async () => {
-  const data = await Product.find();
+const getProductsFromDB = async (searchTerm = "") => {
+  const query = searchTerm
+    ? { name: { $regex: searchTerm, $options: "i" } }
+    : {};
+  const data = await Product.find(query);
   return data;
+};
+
+const getSingleProductFromDB = async (id: string) => {
+  const result = await Product.findById(id);
+  return result;
 };
 
 export const ProductServices = {
   createAProductToDB,
   getProductsFromDB,
+  getSingleProductFromDB,
 };

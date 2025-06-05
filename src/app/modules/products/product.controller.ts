@@ -31,11 +31,32 @@ const getAllProducts = async (req: Request, res: Response) => {
     message: "Products fetched successfully ✅",
     products: result,
   });
-  console.log(` ✅RESULT: ${result}`);
+  console.log(` ✅ RESULT: ${result}`);
+};
+
+const getSingleProduct = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const result = await ProductServices.getSingleProductFromDB(productId);
+    res.status(200).json({
+      success: true,
+      message: "Product fetched successfully ✅",
+      product: result,
+    });
+    console.log(` ✅ RESULT: ${result}`);
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error?.message || "SOMETHING WENT WRONG ⚠️",
+      error: error,
+    });
+    console.log(error);
+  }
 };
 
 //exports
 export const ProductControllers = {
   createProduct,
   getAllProducts,
+  getSingleProduct,
 };
