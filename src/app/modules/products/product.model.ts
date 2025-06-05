@@ -19,7 +19,7 @@ const ProductSchema = new mongoose.Schema<TProduct>({
   category: String,
   tags: [String],
   variants: [VariantSchema],
-  inventory: [InventorySchema],
+  inventory: InventorySchema,
 });
 
 const Product =

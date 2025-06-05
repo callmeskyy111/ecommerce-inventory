@@ -5,7 +5,7 @@ export type TProduct = {
   category: string;
   tags: string[];
   variants: TVariants[];
-  inventory: TIventory[];
+  inventory: TIventory;
 };
 
 export type TVariants = {

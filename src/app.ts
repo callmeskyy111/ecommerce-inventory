@@ -1,10 +1,17 @@
 import express from "express";
+import cors from "cors";
+import productRouter from "./app/modules/products/product.routes";
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/", (_, res) => {
-  res.send("Ecommerce-Inventory Server is running! ✅");
-});
+// parser options
+app.use(express.json());
+app.use(cors());
+
+//routes
+app.use("/api/products", productRouter);
+
+app.get("/",);
 
 export default app;

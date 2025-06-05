@@ -6,10 +6,11 @@ const VariantValidationSchema = z.object({
 });
 
 const InventoryValidationSchema = z.object({
-  quantity: z.number(),
+  quantity: z.number().min(0),
   inStock: z.boolean(),
 });
 
+// Main schema
 const ProductValidationSchema = z.object({
   name: z.string({
     required_error: "NAME is required!",
@@ -20,7 +21,7 @@ const ProductValidationSchema = z.object({
   category: z.string(),
   tags: z.array(z.string()),
   variants: z.array(VariantValidationSchema),
-  inventory: z.array(InventoryValidationSchema),
+  inventory: InventoryValidationSchema,
 });
 
 export default ProductValidationSchema;
