@@ -10,7 +10,7 @@ const InventoryValidationSchema = z.object({
   inStock: z.boolean(),
 });
 
-// Main schema
+// Main validation-schema
 const ProductValidationSchema = z.object({
   name: z.string({
     required_error: "NAME is required!",

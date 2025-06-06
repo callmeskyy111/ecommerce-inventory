@@ -14,6 +14,6 @@ export type TVariants = {
 };
 
 export type TIventory = {
-    quantity:number;
-    inStock:boolean;
-}
+  quantity: number;
+  inStock: boolean;
+};

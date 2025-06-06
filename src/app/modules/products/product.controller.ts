@@ -4,7 +4,6 @@ import { ProductServices } from "./product.services";
 import { error } from "console";
 
 const createProduct = async (req: Request, res: Response) => {
-  //   res.send("Product Route ✅");
   try {
     //first, zod-validation
     const zodParser = ProductValidationSchema.parse(req.body);
