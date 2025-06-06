@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import ProductValidationSchema from "./product.validation";
 import { ProductServices } from "./product.services";
-import { error } from "console";
 
 const createProduct = async (req: Request, res: Response) => {
   try {

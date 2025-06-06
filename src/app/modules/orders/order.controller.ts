@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-//import Order from "./order.model";
 import OrderValidationSchema from "./order.validation";
 import Product from "../products/product.model";
+import { OrderServices } from "./order.services";
 
 const createOrder = async (req: Request, res: Response) => {
   try {
@@ -27,19 +27,21 @@ const createOrder = async (req: Request, res: Response) => {
         });
       }
       if (product) {
-        product.inventory.quanity =
+        product.inventory.quantity =
           product.inventory.quantity - zodValidation.data.quantity;
         product.inventory.inStock =
           product.inventory.quantity === 0 ? false : true;
-        const newOrder = await   
+        const newOrder = await OrderServices.createOrderToDB(
+          zodValidation.data
+        );
+        await product.save();
+        return res.status(200).json({
+          success: true,
+          message: "Order placed successfully",
+          data: newOrder,
+        });
       }
     }
-
-    res.status(200).json({
-      success: true,
-      message: "Order created successfully ✅",
-      //product: result,
-    });
   } catch (error: any) {
     res.status(500).json({
       success: false,

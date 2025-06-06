@@ -6,6 +6,11 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+console.log("TYPE of orderRouter:", typeof orderRouter);
+console.log("orderRouter keys:", Object.keys(orderRouter));
+
+
+
 // parser options
 app.use(express.json());
 app.use(cors());
